@@ -28,6 +28,10 @@ The following external modules are included and subject to its own license.
 History
 -----------------------------------
 
+v1.0.1 (2104-09-05)
+* Add missing file
+* Add item to menu
+
 v1.0.0 (2014-09-05)
 * First release.
 
