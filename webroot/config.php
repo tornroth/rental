@@ -62,6 +62,7 @@ $herbert['menu'] = array(
     'home' => array('text'=>'HEM', 'url'=>'./', 'class'=>null),
     'about' => array('text'=>'OM', 'url'=>'about.php', 'class'=>null),
     'slideshow' => array('text'=>'SLIDESHOW', 'url'=>'slideshow.php', 'class'=>null),
+    'dice' => array('text'=>'TÄRNING', 'url'=>'dice.php', 'class'=>null),
     'source' => array('text'=>'KÄLLKOD', 'url'=>'source.php', 'class'=>null)
   )
 );
