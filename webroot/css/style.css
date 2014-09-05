@@ -1,0 +1,106 @@
+/**
+ * General elements
+ */
+body {
+  color: #333;
+  font-family: arial, sans-serif;
+}
+
+
+/**
+ * Layout of the main page elements 
+ */
+#wrapper {
+  margin: 0 auto;
+  width: 980px; 
+  padding: 10px;
+}
+
+
+/**
+ * Layout for header
+ */
+#header {
+  position: relative;
+}
+
+.sitelogo  {
+  margin-right: 15px;
+  border-style: none;
+}
+
+.sitelogo img {
+  width: 292px;
+  height: 68px;
+}
+
+.sitetitle {
+  position: absolute;
+  top: 6px;
+  font-size: 36px;
+}
+
+.siteslogan {
+  position: absolute;
+  top: 48px;
+  font-style: italic;
+  font-size: 14px;
+  color: #666;
+}
+
+
+/**
+ * Layout for navigationbar
+ */
+#navbar {
+  clear: both;
+  padding-top: 20px;
+}
+
+#navbar nav {
+  padding: 0.5em;
+}
+
+#navbar nav a {
+  padding: 0.2em;
+  border: 2px solid #fff;
+  color: #666;
+  text-decoration: none;
+}
+
+#navbar nav a.selected {
+  border: 2px solid #333;
+  color: #333;
+}
+
+#navbar nav a:hover {
+  border: 2px dashed #666;
+  color: #666;
+}
+
+
+/**
+ * Layout for main
+ */
+#main {
+  min-height: 20em;
+}
+
+#main h1 {
+  border-bottom: 1px solid #ccc;
+}
+
+
+/**
+ * Layout for footer
+ */
+footer {
+  margin-top: 40px;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+
+footer p {
+  color: #666;
+  font-size: 12px;
+}
