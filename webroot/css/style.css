@@ -30,14 +30,17 @@ body {
 }
 
 .sitelogo img {
-  width: 292px;
+  width: 122px;
   height: 68px;
 }
 
 .sitetitle {
   position: absolute;
   top: 6px;
+  font-style: italic;
   font-size: 36px;
+  text-decoration: none;
+  color: #666;
 }
 
 .siteslogan {

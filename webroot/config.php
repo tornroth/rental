@@ -48,22 +48,21 @@ $herbert = array();
  *
  */
 $herbert['lang'] = 'sv';
-$herbert['title_append'] = ' | Herbert';
+$herbert['title_append'] = ' | Rental Movies';
 
 $herbert['header'] = <<<EOD
-<a href='./' class='sitelogo'><img src='img/herbert.png' alt='Herbert Logo'/></a>
-<span class='sitetitle'>Webbtemplate</span>
-<span class='siteslogan'>Återanvändbara moduler för webbutveckling med PHP</span>
+<a href='./' class='sitelogo'><img src='img/rentalmovies.png' alt='Rental Movies'/></a>
+<a href='./' class='sitetitle'>Rental Movies</a>
+<span class='siteslogan'>Hitta dina favoritfilmer</span>
 EOD;
 
 $herbert['menu'] = array(
   'callback' => 'modifyNavbar',
   'items' => array(
-    'home' => array('text'=>'HEM', 'url'=>'./', 'class'=>null),
+    // 'home' => array('text'=>'HEM', 'url'=>'./', 'class'=>null),
+    'movies' => array('text'=>'FILMER', 'url'=>'movies.php', 'class'=>null),
+    'news' => array('text'=>'NYHETER', 'url'=>'news.php', 'class'=>null),
     'about' => array('text'=>'OM', 'url'=>'about.php', 'class'=>null),
-    'slideshow' => array('text'=>'SLIDESHOW', 'url'=>'slideshow.php', 'class'=>null),
-    'dice' => array('text'=>'TÄRNING', 'url'=>'dice.php', 'class'=>null),
-    'source' => array('text'=>'KÄLLKOD', 'url'=>'source.php', 'class'=>null)
   )
 );
 
