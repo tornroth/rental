@@ -1,22 +1,21 @@
-Herbert
-=======
+Rental Movies
+==================================
 
-A webbtemplate based on Anax-base (https://github.com/mosbth/Anax-base)
-It is also a task in the oophp-course at BTH (dbwebb.se).
+A project for rental movies.
+
+Based on the webbtemplates [Herbert](https://github.com/rcus/herbert) and [Anax-base](https://github.com/mosbth/Anax-base).
+
 Built by Marcus Törnroth.
 
 
-License 
-------------------
-
+License
+----------------------------------
 This software is free software and carries a MIT license.
 
 
 Use of external libraries
------------------------------------
-
+----------------------------------
 The following external modules are included and subject to its own license.
-
 
 ### Modernizr
 * Website: http://modernizr.com/
@@ -25,16 +24,5 @@ The following external modules are included and subject to its own license.
 * Path: included in `webroot/js/modernizr.js`
 
 
-History
------------------------------------
-
-v1.0.1 (2104-09-05)
-* Add missing file
-* Add item to menu
-
-v1.0.0 (2014-09-05)
-* First release.
-
-
 ----------------------------------
-Copyright (c) 2014 Marcus Törnroth
+Copyright (c) 2015 Marcus Törnroth
