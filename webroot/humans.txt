@@ -1,1 +1,0 @@
-Herbert is a PHP-boilerplate/framework for small websites. Herbert was built by Marcus Törnroth (m@rcus.se) as part of a course at BTH with instructions athttp://dbwebb.se/oophp (swedish). It was also published at GitHub: https://github.com/rcus/herbert.
