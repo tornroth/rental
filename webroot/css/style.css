@@ -107,3 +107,11 @@ footer p {
   color: #666;
   font-size: 12px;
 }
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

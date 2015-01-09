@@ -44,6 +44,16 @@ $herbert = array();
 
 
 /**
+ * Settings for the database.
+ *
+ */
+$herbert['db']['dsn']            = 'mysql:host=blu-ray.student.bth.se;dbname=matg12;';
+$herbert['db']['username']       = 'matg12';
+$herbert['db']['password']       = 'T]FF5vI%';
+$herbert['db']['driver_options'] = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'");
+
+
+/**
  * Site wide settings.
  *
  */
@@ -59,7 +69,6 @@ EOD;
 $herbert['menu'] = array(
   'callback' => 'modifyNavbar',
   'items' => array(
-    // 'home' => array('text'=>'HEM', 'url'=>'./', 'class'=>null),
     'movies' => array('text'=>'FILMER', 'url'=>'movies.php', 'class'=>null),
     'news' => array('text'=>'NYHETER', 'url'=>'news.php', 'class'=>null),
     'about' => array('text'=>'OM', 'url'=>'about.php', 'class'=>null),
@@ -68,7 +77,7 @@ $herbert['menu'] = array(
 
 $herbert['footer'] = <<<EOD
 <footer>
-	<p>© 2014 Marcus Törnroth | <a href='https://github.com/rcus/herbert'>GitHub</a> | <a href='http://validator.w3.org/unicorn/check?ucn_uri=referer&amp;ucn_task=conformance'>Unicorn</a></p>
+	<p>© 2015 Rental Movies | <a href="admin.php">admin</a></p>
 </footer>
 EOD;
 

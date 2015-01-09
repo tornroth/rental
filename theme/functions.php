@@ -47,7 +47,7 @@ function get_menu($menu) {
  * @return array $items modified content in the menu.
  */
 function modifyNavbar($items) {
-  $ref = basename($_SERVER['REQUEST_URI']) == "webroot" ? "home" : basename($_SERVER['REQUEST_URI'], ".php");
+  $ref = basename($_SERVER['REQUEST_URI']) == "webroot" ? "home" : basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), ".php");
   if(array_key_exists($ref, $items)) {
     $items[$ref]['class'] .= 'selected'; 
   }

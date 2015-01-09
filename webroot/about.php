@@ -3,18 +3,16 @@
  * This is a Herbert pagecontroller.
  *
  */
+
 // Include the essential config-file which also creates the $herbert variable with its defaults.
 include(__DIR__.'/config.php'); 
 
-
 // Do it and store it all in variables in the Herbert container.
-$herbert['title'] = "Om Herbert";
+$herbert['title'] = "Om oss";
 
 $herbert['main'] = <<<EOD
-<h1>Om Herbert</h1>
-<p>I kursen <a href="http://dbwebb.se/oophp">Databaser och objektorienterad programmering i PHP</a> vid <a href="http://bth.se">Blekinge Tekniska Högskola</a> var en av deluppgifterna att skapa en webbmall. Ur detta skapades Herbert.</p>
-<h3>Varför Herbert?</h3>
-<p>Namnet kommer delvis från ingenstans. Och delvis från ett taskigt namnminne. Men någonstans i bakhuvudet ser jag en äldre man som tidigare var min kollega på en skola där han arbetade som speciallärare. Han hade en förmåga att hålla ihop olika brokiga grupper och ge var och en möjlighet att visa sina styrkor. Eleverna i dessa grupper kunde därför tillsammans utvecklas och visa på stor kompetens. Tyvärr har jag glömt hans namn, men det är inte långt från Herbert.</p>
+<h1>Om Rental Movies</h1>
+<p>Vi finns för att... Ja, för att du finns! Vår historia är kort, men ändå längre än <a href="http://www.imdb.com/title/tt0052618/">Ben-Hur</a> (3:32).</p>
 EOD;
 
 // Finally, leave it all to the rendering phase of Herbert.
