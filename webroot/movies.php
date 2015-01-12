@@ -10,6 +10,7 @@ include(__DIR__.'/config.php');
 // Connect to the Movieclass with connections to the database
 $movies = new CMovies($herbert['db']);
 $adminpanel = null;
+$output = null;
 
 // Show info for a movie
 if (isset($_GET['show']) && is_numeric($_GET['show'])) {
@@ -20,11 +21,22 @@ if (isset($_GET['show']) && is_numeric($_GET['show'])) {
     $pagetitle = $info->title;
 
     // Create movie info
-    $content = "Visa en film";
+    $content = <<<EOD
+<div style='float:left;width:25%;'>
+    <img src='img/img.php?src=movies/{$info->image}.jpg' />
+</div>
+<div style='float:left;width:75%;'>
+    <p>{$info->plot}</p>
+    <p style='font-size:small;'>({$info->year}) {$movies->GetGenresAsLinks($_GET['show'])} <a href='http://www.imdb.com/title/{$info->imdb}/'><img src='img/img.php?src=imdb.png&height=14'></a></p>
+    <p>Pris: {$info->price} kr</p>
+    <iframe width="560" height="315" src="//www.youtube.com/embed/{$info->youtube}" frameborder="0" allowfullscreen></iframe>
+</div>
+<div style='clear:both;'></div>
+EOD;
 
     // Create adminpanel
     if (isset($_SESSION['auth']) && $_SESSION['auth']->IsAuth()) {
-        $adminpanel = "<p><a href='movies.php?edit={$_GET['show']}'>Redigera film</a> | <a href='movies.php?remove={$_GET['show']}'>Radera film</a></p>";
+        $adminpanel = "<p>Admin: <a href='movies.php?edit={$_GET['show']}'>Redigera film</a> | <a href='movies.php?remove={$_GET['show']}'>Radera film</a></p>";
     }
 }
 // Edit a movie
@@ -33,7 +45,19 @@ elseif (isset($_GET['edit'])) {
     $pagetitle = "Edit";
 
     // Create content
-    $content = "Visa en film";
+    $content = <<<EOD
+<form method=post>
+  <fieldset>
+  <legend>Uppdatera info om film</legend>
+  <input type='hidden' name='id' value='{$id}'/>
+  <output>{$output}</output>
+  <p><label>Titel:<br/><input type='text' name='title' value='{$movie->title}'/></label></p>
+  <p><label>År:<br/><input type='text' name='year' value='{$movie->year}'/></label></p>
+  <p><label>Bild:<br/><input type='text' name='image' value='{$movie->image}'/></label></p>
+  <p><input type='submit' name='save' value='Spara'/> <input type='reset' value='Återställ'/> <input type='submit' name='delete' value='Ta bort film'/></p>
+  </fieldset>
+</form>
+EOD;
 }
 // Add a movie
 elseif (isset($_GET['add'])) {
@@ -56,38 +80,9 @@ else {
     // Set title
     $pagetitle = "Filmer";
 
-    // Get parameters
-    parse_str($_SERVER['QUERY_STRING'], $params);
-    $title = isset($_GET['title']) && !empty($_GET['title']) ? htmlentities($_GET['title']) : null;
-    $fromYear = isset($_GET['fromYear']) && !empty($_GET['fromYear']) ? $_GET['fromYear'] : null;
-    $toYear = isset($_GET['toYear']) && !empty($_GET['toYear']) ? $_GET['toYear'] : null;
-    $genre = isset($_GET['genre']) && !empty($_GET['genre']) ? $_GET['genre'] : null;
-
-    // Get genres
-    $genres = $movies->GetGenres();
-    $selectGenre = "<select name='genre'><option value=''>-- Välj genre --</option>" . PHP_EOL;
-    foreach($genres as $val) {
-        $selectGenre .= "<option value='$val'" . ($val==$genre ? " selected" : "") . ">$val</option>" . PHP_EOL;
-    }
-    $selectGenre .= "</select>" . PHP_EOL;
-
-    // Create searchform
-    $content = <<<EOD
-<form>
-<fieldset>
-<legend>Sök</legend>
-<p><label>Sök film: <input type='search' name='title' value='{$title}'/></label>
-<label>Genre: {$selectGenre}</label>
-<label>Från år: <input type='search' name='fromYear' size='6' value='{$fromYear}'/></label>
-<label>Till år: <input type='search' name='toYear' size='6' value='{$toYear}'/></label>
-<input type='submit' name='submit' value='Sök'/>
-<a href='?'>Rensa sök</a></p>
-</fieldset>
-</form>
-EOD;
-
+    $content = $movies->GetSearchForm();
     // Create movietable
-    $content .= $movies->GetTable($params);
+    $content .= $movies->GetTable();
 
     // Create adminpanel
     if (isset($_SESSION['auth']) && $_SESSION['auth']->IsAuth()) {
@@ -95,12 +90,17 @@ EOD;
     }
 }
 
+
+
+
+
 // Do it and store it all in variables in the Herbert container.
 $herbert['title'] = $pagetitle;
 
 $herbert['main'] = <<<EOD
 <h1>$pagetitle</h1>
 $adminpanel
+$output
 $content
 EOD;
 
