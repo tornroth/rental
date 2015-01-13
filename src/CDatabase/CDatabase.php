@@ -115,7 +115,7 @@ class CDatabase {
      * Return last insert id.
      */
     public function LastInsertId() {
-        return $this->db->lastInsertid();
+        return $this->db->lastInsertId();
     }
 
 

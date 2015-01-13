@@ -18,7 +18,7 @@ CREATE TABLE rm_Movie
     year INT NOT NULL DEFAULT 1900,
     imdb VARCHAR(9),
     youtube VARCHAR(11),
-    image VARCHAR(100) DEFAULT NULL,
+    image VARCHAR(100),
     plot TEXT,
     price INT NOT NULL DEFAULT 49
 );
