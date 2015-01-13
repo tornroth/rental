@@ -121,8 +121,20 @@ class CMovies extends CDatabase
             default:
                 return;
         }
-
         return $html;
+    }
+
+
+    /**
+     * Get three movies to firstpage
+     *
+     * @return string Movies in HTML.
+     */
+    public function GetMoviesToFirstpage() {
+        $sql = "SELECT * FROM rm_VMovie ORDER BY added desc LIMIT 3";
+        $res = parent::ExecuteSelectQueryAndFetchAll($sql);
+        var_dump($res);
+        return;
     }
 
 

@@ -222,8 +222,8 @@ class CBlog extends CDatabase
                 "<p>". ((strlen(strip_tags($val->content)) > 180) ? substr(strip_tags($val->content,'<br><p>'), 0, 180)."... <a href='?show={$val->postId}' style='font-size:small;font-style:italic;text-decoration:none;'>Läs mer &raquo;</a>" : $val->content ) ."</p>".PHP_EOL.
                 "</div>".PHP_EOL;
             }
-            $html .= "</div>" . PHP_EOL;
             $html .= $this->GetPageNavigation();
+            $html .= "</div>" . PHP_EOL;
         }
 
         // Create adminpanel
@@ -377,26 +377,20 @@ class CBlog extends CDatabase
     /**
      * Create navigation among pages.
      *
-     * @param integer $hits per page.
-     * @param integer $page current page.
-     * @param integer $max number of pages. 
-     * @param integer $min is the first page number, usually 0 or 1. 
-     * @return string as a link to this page.
+     * @return string Navigation in HTML.
      */
     private function GetPageNavigation() {
         $html = "";
-        $stopPage = ceil($this->settings['hitsSum']/$this->params['hits']);
-        if ($this->settings['startPage'] <> $stopPage) {
-            $html  = "<a href='?" . http_build_query(array_merge($_GET, array('page' => $this->settings['startPage']))) . "'>&lt;&lt;</a> ";
-            $html .= "<a href='?" . http_build_query(array_merge($_GET, array('page' => ($this->params['page'] > $this->settings['startPage'] ? $this->params['page'] - 1 : $this->settings['startPage'])))) . "'>&lt;</a> ";
-    
-            for($i=$this->settings['startPage']; $i<=$stopPage; $i++) {
-                $html .= "<a href='?" . http_build_query(array_merge($_GET, array('page' => $i))) . "'>$i</a> ";
-            }
-    
-            $html .= "<a href='?" . http_build_query(array_merge($_GET, array('page' => ($this->params['page'] < $stopPage ? $this->params['page'] + 1 : $stopPage)))) . "'>&gt;</a> ";
-            $html .= "<a href='?" . http_build_query(array_merge($_GET, array('page' => $stopPage))) . "'>&gt;&gt;</a> ";
+        if ( $this->GetParam('page') > 1 ) {
+            $prev = $this->GetParam('page')-1;
+            $html = "<div style='float:left;width:40%;'><a href='?page=$prev' style='text-decoration:none;'>&laquo; Nyare nyheter</a></div>".PHP_EOL;
         }
+        $last = ceil($this->settings['hitsSum']/$this->params['hits']);
+        if ( $this->GetParam('page') < $last) {
+            $next = $this->GetParam('page')+1;
+            $html .= "<div style='float:right;width:40%;text-align:right;' ><a href='?page=$next' style='text-decoration:none;'>Äldre nyheter &raquo;</a></div>".PHP_EOL;
+        }
+        $html .= "<div style='clear:both;'></div>".PHP_EOL;
         return $html;
     }
 }
