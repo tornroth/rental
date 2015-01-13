@@ -12,6 +12,7 @@ class CUser {
     private $db = null; // The PDO object
     private $acronym;   // Users acronym, if user is logged in
     private $name;      // Users name, if user... You know...
+    private $id;        // Users ID
 
 
     /**
@@ -68,7 +69,7 @@ class CUser {
     public function Login($user, $password) {
         $success = false;
         $this->ConnectDB();
-        $sql = "SELECT acronym, name FROM rm_Users WHERE acronym = ? AND password = md5(concat(?, salt))";
+        $sql = "SELECT acronym, name, id FROM rm_Users WHERE acronym = ? AND password = md5(concat(?, salt))";
         $stmt = $this->db->prepare($sql);
         $stmt->execute(array($user, $password));
         $res = $stmt->fetchAll();
@@ -76,6 +77,7 @@ class CUser {
             $success = true;
             $this->acronym = $user;
             $this->name = $res[0]->name;
+            $this->id = $res[0]->id;
         }
         $this->DisconnectDB();
         return $success;
@@ -121,5 +123,15 @@ class CUser {
      */
     public function GetName() {
         return $this->name;
+    }
+
+
+    /**
+     * Return logged in users id
+     *
+     * @return int with id
+     */
+    public function GetId() {
+        return $this->id;
     }
 }

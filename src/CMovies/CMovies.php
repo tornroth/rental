@@ -106,8 +106,7 @@ class CMovies extends CDatabase
     public function GetPageContent() {
         switch ($this->settings['pageView']) {
             case 'table':
-                $html = $this->GetSearchForm();
-                $html .= $this->GetTable();
+                $html = $this->GetTable();
                 break;
             case 'show':
                 $html = $this->GetMovie();
@@ -227,7 +226,6 @@ class CMovies extends CDatabase
     /**
      * Function to create movietable.
      *
-     * @param object $res Result from the SQL-query.
      * @return string List of movies in a HTML-table.
      */
     private function GetTable() {
@@ -296,6 +294,9 @@ class CMovies extends CDatabase
             $html .= "</table>" . PHP_EOL;
             $html .= $this->GetPageNavigation();
         }
+
+        // Get searchpanel
+        $html = $this->GetSearchForm() . $html;
 
         // Create adminpanel
         if ( $this->settings['admin'] ) {
@@ -405,8 +406,6 @@ class CMovies extends CDatabase
             $sql = "DELETE FROM rm_Movie2Genre WHERE idMovie = $id";
             parent::ExecuteQuery($sql);
         }
-
-echo $id;
 
         // Make array of all genres with their id's
         $sql = "SELECT * FROM rm_Genre";
