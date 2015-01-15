@@ -26,7 +26,7 @@ $herbert['main'] = <<<EOD
 <div style='float:left;background-color:#ccc;'>
 <h4 style='margin:12px;' ><a href='pig.php' style='display:block;color:#333;text-decoration:none;' >Vinn en hyrfilm!</a></h4>
 <p style='margin:0 12px;' >Nu kan du utmana oss i det klassiska spelet "Kasta gris". Men det är inte bara en lek, du kan vinna...<br />EN HYRFILM!!</p>
-<p style='margin:4px 12px 12px;text-align:right;' ><a href='pig.php' style='font-size:small;font-style:italic;text-decoration:none;'>Ta mig dig &raquo;</a></p>
+<p style='margin:4px 12px 12px;text-align:right;' ><a href='pig.php' style='font-size:small;font-style:italic;text-decoration:none;'>Ta mig dit &raquo;</a></p>
 </div>
 </div>
 </div>
