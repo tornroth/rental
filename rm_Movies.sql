@@ -24,6 +24,8 @@ CREATE TABLE rm_Movie
 );
 
 INSERT INTO rm_Movie (added, title, imdb, youtube, year, image, plot) VALUES
+    (DATE_SUB(NOW(), INTERVAL 11 day), 'Ben-Hur', 'tt0052618', 'LlzfqVtmxVA', 1959, 'ben-hur', 'When a Jewish prince is betrayed and sent into slavery by a Roman friend, he regains his freedom and comes back for revenge.'),
+    (DATE_SUB(NOW(), INTERVAL 10 day), 'Hajen', 'tt0073195', 'U1fu_sA7XhE', 1975, 'hajen', 'When a gigantic great white shark begins to menace the small island community of Amity, a police chief, a marine scientist and grizzled fisherman set out to stop it.'),
     (DATE_SUB(NOW(), INTERVAL 9 day), 'Pulp fiction', 'tt0110912', 's7EdQ4FqbhY', 1994, 'pulp-fiction', 'The lives of two mob hit men, a boxer, a gangster\'s wife, and a pair of diner bandits intertwine in four tales of violence and redemption.'),
     (DATE_SUB(NOW(), INTERVAL 8 day), 'Kopps', 'tt0339230', 'aJFdePDqKrY', 2003, 'kopps', 'When a small town police station is threatened with shutting down because of too little crime, the police realise that something has to be done...'),
     (DATE_SUB(NOW(), INTERVAL 7 day), 'Die Hard', 'tt0095016', '-qxBXm7ZUTM', 1988, 'die-hard', 'John McClane, officer of the NYPD, tries to save wife Holly Gennaro and several others, taken hostage by German terrorist Hans Gruber during a Christmas party at the Nakatomi Plaza in Los Angeles.'),
@@ -62,16 +64,18 @@ CREATE TABLE rm_Movie2Genre
 );
 
 INSERT INTO rm_Movie2Genre (idMovie, idGenre) VALUES
-    (1, 4), (1, 5), (1, 6),
-    (2, 11), (2, 1), (2, 10),
-    (3, 11), (3, 6),
-    (4, 5),
-    (5, 1),
-    (6, 7), (6, 8), (6, 1),
-    (7, 8), (7, 1), (7, 10),
-    (8, 1),
-    (9, 4), (9, 6),
-    (10, 11), (10, 8);
+    (1, 8), (1, 5),
+    (2, 5), (2, 6),
+    (3, 4), (3, 5), (3, 6),
+    (4, 11), (4, 1), (4, 10),
+    (5, 11), (5, 6),
+    (6, 5),
+    (7, 1),
+    (8, 7), (8, 8), (8, 1),
+    (9, 8), (9, 1), (9, 10),
+    (10, 1),
+    (11, 4), (11, 6),
+    (12, 11), (12, 8);
 
 
 DROP VIEW IF EXISTS rm_VMovie;

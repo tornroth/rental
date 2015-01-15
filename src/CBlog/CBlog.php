@@ -121,6 +121,27 @@ class CBlog extends CDatabase
 
 
     /**
+     * Get three movies to firstpage
+     *
+     * @return string Movies in HTML.
+     */
+    public function GetNewsToFirstpage() {
+        $sql = "SELECT * FROM rm_BlogPost ORDER BY added DESC LIMIT 3";
+        $res = parent::ExecuteSelectQueryAndFetchAll($sql);
+        
+        $html = "<div><h2>Senaste nytt</h2>";
+        foreach ($res as $val) {
+            $html .= "<div style='float:left;width:235px;margin-bottom:10px;background-color:#ccc;'>".
+                "<h4 style='margin:12px;' ><a href='news.php?show={$val->postId}' style='display:block;color:#333;text-decoration:none;' >{$val->title}</a></h4>".
+                "<p style='margin:0 12px;' >". substr(strip_tags($val->content,'<br><p>'), 0, 100)."...</p>".
+                "<p style='margin:4px 12px 12px;text-align:right;' ><a href='news.php?show={$val->postId}' style='font-size:small;font-style:italic;text-decoration:none;'>Läs hela inlägget &raquo;</a></p>";
+            $html .= "</div>";
+        }
+        $html .= "</div><div style='clear:right;'></div>";
+        return $html;
+    }
+
+    /**
      * It set, get the parameter, otherwise an empty string.
      *
      * @return string The parameter or just an empty string.

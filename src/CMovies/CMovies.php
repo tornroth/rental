@@ -126,15 +126,65 @@ class CMovies extends CDatabase
 
 
     /**
-     * Get three movies to firstpage
+     * Get the three latest movies to firstpage
      *
      * @return string Movies in HTML.
      */
-    public function GetMoviesToFirstpage() {
-        $sql = "SELECT * FROM rm_VMovie ORDER BY added desc LIMIT 3";
+    public function GetLatestMoviesToFirstpage() {
+        $sql = "SELECT id, title, image FROM rm_VMovie ORDER BY added DESC LIMIT 3";
         $res = parent::ExecuteSelectQueryAndFetchAll($sql);
-        var_dump($res);
-        return;
+        
+        $html = "<div><h2>Nyinkomna filmer</h2>";
+        foreach ($res as $val) {
+            $image = (file_exists(realpath(dirname(__FILE__)."/../../webroot/img/movies/.")."/{$val->image}.jpg") ) ? $val->image.".jpg" : "default.jpg";
+            $html .= "<div style='float:left;width:235px;margin-right:10px;background-color:#ccc;'>".
+                "<a href='movies.php?show={$val->id}' ><img src='img/img.php?src=movies/{$image}&width=235&height=349&crop-to-fit'></a>".
+                "<h4 style='margin:0;padding:12px;' ><a href='movies.php?show={$val->id}' style='display:block;' >{$val->title}</a></h4>";
+            $html .= "</div>";
+        }
+        $html .= "</div><div style='clear:left;'></div>";
+        return $html;
+    }
+
+
+    /**
+     * Get three "carefully selected" (random) movies to firstpage
+     *
+     * @return string Movies in HTML.
+     */
+    public function GetSelectedMoviesToFirstpage() {
+        $sql = "SELECT * FROM rm_VMovie ORDER BY RAND() LIMIT 3";
+        $res = parent::ExecuteSelectQueryAndFetchAll($sql);
+        $title = array('Mest populär', 'Rekommenderas', 'Senast uthyrd');
+
+        $html = "<div>";
+        foreach ($res as $key => $val) {
+            $image = (file_exists(realpath(dirname(__FILE__)."/../../webroot/img/movies/.")."/{$val->image}.jpg") ) ? $val->image.".jpg" : "default.jpg";
+            $html .= "<div style='float:left;width:235px;margin-right:10px;' ><h2>{$title[$key]}</h2>".
+                "<div style='background-color:#ccc;' ><a href='movies.php?show={$val->id}' ><img src='img/img.php?src=movies/{$image}&width=235&height=349&crop-to-fit'></a>".
+                "<h4 style='margin:0 12px;padding:12px 0;text-overflow:;white-space:nowrap;overflow:hidden;' ><a href='movies.php?show={$val->id}' style='display:block;' >{$val->title}</a></h4></div>";
+            $html .= "</div>";
+        }
+        $html .= "</div><div style='clear:left;'></div>";
+        return $html;
+    }
+
+
+    /**
+     * Get categories in use to firstpage
+     *
+     * @return string Movies in HTML.
+     */
+    public function GetCategriesToFirstpage() {
+        $sql = "SELECT * FROM rm_VMovie ORDER BY added DESC LIMIT 3";
+        $res = parent::ExecuteSelectQueryAndFetchAll($sql);
+        
+        // $html = "<div><h2>Sök film efter genre</h2>";
+        $html = "<div style='float:left;width:725px;margin:28px 10px 0 0;background-color:#ccc;'>".
+            "<h4 style='margin:12px;text-align:center;text-transform: uppercase;' >{$this->GetGenresAsLinks()}</h4>";
+        // $html .= "</div>";
+        $html .= "</div><div style='clear:left;'></div>";
+        return $html;
     }
 
 
@@ -510,7 +560,7 @@ class CMovies extends CDatabase
         $html = "";
         $genres = $this->GetGenres($get);
         foreach($genres as $genre) {
-            $html .= "<a href='?genre=$genre'>$genre</a> ";
+            $html .= "<a href='movies.php?genre=$genre'>$genre</a> ";
         }
         return $html;
     }

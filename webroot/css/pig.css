@@ -1,0 +1,91 @@
+ul.dice {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ 
+ul.dice li {
+  display: inline-block;
+  padding: 0;
+  margin: 0 4px 0 0;
+  width: 32px;
+  height: 32px;
+  background: url(../img/dice-faces.jpg) no-repeat;
+}
+ 
+ul.dice li.dice-1 { background-position: -160px 0px; }
+ul.dice li.dice-2 { background-position: -128px 0px; }
+ul.dice li.dice-3 { background-position:  -96px 0px; }
+ul.dice li.dice-4 { background-position:  -64px 0px; }
+ul.dice li.dice-5 { background-position:  -32px 0px; }
+ul.dice li.dice-6 { background-position:    0px 0px; }
+
+#pigcontent {
+    margin: 0 auto;
+    height: 15em;
+    width: 90%;
+}
+
+#pig0 {
+    float: left;
+    height: 100%;
+    width: 48%;
+}
+
+#pig1 {
+    float: right;
+    height: 100%;
+    width: 48%;
+}
+
+.pigactive {
+  border: 2px solid #33B31B; 
+  background: #99F786; 
+  background:  -webkit-gradient(linear, left bottom, left top, color-stop(0, #99F786), color-stop(1, #f3f3f3)) no-repeat; 
+  background: -moz-linear-gradient(center bottom, #99F786 0%, #f3f3f3 100%) no-repeat; 
+  height: 100%; 
+  padding: 5px; 
+} 
+
+.pigwaiting {
+  border: 2px solid #C2252C; 
+  background: #F7868B; 
+  background:  -webkit-gradient(linear, left bottom, left top, color-stop(0, #F7868B), color-stop(1, #f3f3f3)) no-repeat; 
+  background: -moz-linear-gradient(center bottom, #F7868B 0%, #f3f3f3 100%) no-repeat; 
+  height: 100%; 
+  padding: 5px; 
+} 
+
+.pigname {
+    float: left;
+    margin-left: 1.5em;
+    text-align: center;
+}
+
+.pigsum {
+    float: right;
+    width: 2em;
+    margin-top: .5em;
+    margin-right: 1.5em;
+    border: 2px solid;
+    padding: .2em;
+    background-color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.pigmsg {
+    height: 2.5em;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.pigbtns {
+    height: 1.5em;
+    text-align: center;
+}
+
+.clear {
+    clear:both;
+}

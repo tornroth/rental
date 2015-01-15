@@ -15,14 +15,22 @@ $news = new CBlog($herbert['db']);
 $herbert['title'] = "Hitta dina favoritfilmer";
 
 $herbert['main'] = <<<EOD
-<h1>Välkommen</h1>
-
-<div>{$movies->GetMoviesToFirstpage()}</div>
-
-<p>Visa de tre senaste blogginläggen.</p>
-<p>Visa en översikt av de kategorier som finns för filmerna.</p>
-<p>Visa bilder på mest populära film och senast hyrda film (okey att hårdkoda).</p>
-<p>Lägg till övrig information efter eget tycke för att göra en presentabel första sida.</p>
+<div id='content'>
+{$movies->GetLatestMoviesToFirstpage()}
+{$movies->GetCategriesToFirstpage()}
+{$movies->GetSelectedMoviesToFirstpage()}
+</div>
+<div id='sidebar'>
+{$news->GetNewsToFirstpage()}
+<div style='float:left;width:235px;'><h2>Tävling</h2>
+<div style='float:left;background-color:#ccc;'>
+<h4 style='margin:12px;' ><a href='pig.php' style='display:block;color:#333;text-decoration:none;' >Vinn en hyrfilm!</a></h4>
+<p style='margin:0 12px;' >Nu kan du utmana oss i det klassiska spelet "Kasta gris". Men det är inte bara en lek, du kan vinna...<br />EN HYRFILM!!</p>
+<p style='margin:4px 12px 12px;text-align:right;' ><a href='pig.php' style='font-size:small;font-style:italic;text-decoration:none;'>Ta mig dig &raquo;</a></p>
+</div>
+</div>
+</div>
+<div style='clear:both;'></div>
 EOD;
 
 // Finally, leave it all to the rendering phase of Herbert.

@@ -92,7 +92,20 @@ body {
 #main h1 {
   border-bottom: 1px solid #ccc;
 }
-
+#content {
+  float: left;
+  width: 735px;
+}
+#content h4 a {
+  color:#333;text-decoration:none;
+}
+#sidebar {
+  float: right;
+  width: 225px;
+  margin: 0 0 0 10px;
+  padding: 0 0 0 9px;
+  border-left: 1px solid #fff;
+}
 
 /**
  * Layout for footer

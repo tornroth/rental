@@ -71,6 +71,7 @@ $herbert['menu'] = array(
   'items' => array(
     'movies' => array('text'=>'FILMER', 'url'=>'movies.php', 'class'=>null),
     'news' => array('text'=>'NYHETER', 'url'=>'news.php', 'class'=>null),
+    'pig' => array('text'=>'TÄVLING', 'url'=>'pig.php', 'class'=>null),
     'about' => array('text'=>'OM', 'url'=>'about.php', 'class'=>null),
   )
 );
